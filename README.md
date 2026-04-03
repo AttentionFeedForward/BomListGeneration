@@ -109,8 +109,8 @@ BOM/
 ### 1. 克隆项目
 
 ```bash
-git clone <repository-url>
-cd BOM
+git clone https://github.com/AttentionFeedForward/BomListGeneration
+cd BomListGeneration
 ```
 
 ### 2. 环境设置
