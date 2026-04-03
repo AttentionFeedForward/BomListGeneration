@@ -1,0 +1,183 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  background: radial-gradient(ellipse at center, #1E3A8A 0%, #0A0E27 100%);
+  min-height: 100vh;
+  color: white;
+  overflow-x: hidden;
+}
+
+code {
+  font-family: 'JetBrains Mono', source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+    monospace;
+}
+
+/* 科技感网格背景 */
+.tech-grid {
+  background-image: 
+    linear-gradient(rgba(0, 245, 255, 0.1) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(0, 245, 255, 0.1) 1px, transparent 1px);
+  background-size: 50px 50px;
+  animation: grid-move 20s linear infinite;
+}
+
+@keyframes grid-move {
+  0% { background-position: 0 0; }
+  100% { background-position: 50px 50px; }
+}
+
+/* 玻璃态效果 */
+.glass-effect {
+  background: rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+}
+
+/* 霓虹光效 */
+.neon-glow {
+  box-shadow: 
+    0 0 5px rgba(0, 245, 255, 0.5),
+    0 0 10px rgba(0, 245, 255, 0.3),
+    0 0 15px rgba(0, 245, 255, 0.2);
+}
+
+.neon-glow:hover {
+  box-shadow: 
+    0 0 10px rgba(0, 245, 255, 0.8),
+    0 0 20px rgba(0, 245, 255, 0.6),
+    0 0 30px rgba(0, 245, 255, 0.4);
+}
+
+/* 数据流线动画 */
+.data-flow {
+  position: relative;
+  overflow: hidden;
+}
+
+.data-flow::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(90deg, transparent, #00F5FF, transparent);
+  animation: flow 2s linear infinite;
+}
+
+@keyframes flow {
+  0% { left: -100%; }
+  100% { left: 100%; }
+}
+
+/* 粒子效果 */
+.particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.particle {
+  position: absolute;
+  width: 2px;
+  height: 2px;
+  background: #00F5FF;
+  border-radius: 50%;
+  animation: particle-float 10s linear infinite;
+}
+
+@keyframes particle-float {
+  0% {
+    transform: translateY(100vh) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  90% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(-10vh) translateX(100px);
+    opacity: 0;
+  }
+}
+
+/* 滚动条样式 */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: rgba(255, 255, 255, 0.1);
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(0, 245, 255, 0.5);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(0, 245, 255, 0.8);
+}
+
+.glass-effect-2 {
+  background: rgba(15, 30, 70, 0.3);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.glowing-border {
+  border: 1px solid transparent;
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+
+.glowing-border:hover {
+  border-color: rgba(0, 245, 255, 0.5);
+  box-shadow: 0 0 10px rgba(0, 245, 255, 0.3);
+}
+
+.practice-card {
+  background: rgba(255, 255, 255, 0.05);
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  cursor: pointer;
+}
+
+.practice-card:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(0, 245, 255, 0.3);
+}
+
+.practice-card.selected {
+  background: rgba(0, 245, 255, 0.15);
+  border-color: #00F5FF;
+  box-shadow: 0 0 15px rgba(0, 245, 255, 0.4);
+}
+
+.card-image-placeholder {
+  background-color: rgba(0, 0, 0, 0.3);
+  background-image: 
+    linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%),
+    linear-gradient(45deg, rgba(255,255,255,0.05) 25%, transparent 25%, transparent 75%, rgba(255,255,255,0.05) 75%);
+  background-size: 20px 20px;
+  background-position: 0 0, 10px 10px;
+}

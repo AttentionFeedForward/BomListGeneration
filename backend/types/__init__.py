@@ -1,0 +1,49 @@
+"""
+数据类型定义包
+"""
+
+from .module_types import (
+    Point,
+    BoundingBox,
+    TextBox,
+    EndpointPair,
+    Measurements,
+    MatchResult,
+    UnmatchedEndpoint,
+    UnmatchedText,
+    MatchSummary,
+    ScaleFilterInfo,
+    ProcessingInfo,
+    DebugInfo,
+    ModuleIdentificationResult,
+    ApiResponse,
+    DetectionItem,
+    DetectionData,
+    DependencyStatus,
+    HealthCheckResult,
+    to_frontend_format,
+    from_dimension_matcher_result,
+)
+
+__all__ = [
+    "Point",
+    "BoundingBox",
+    "TextBox",
+    "EndpointPair",
+    "Measurements",
+    "MatchResult",
+    "UnmatchedEndpoint",
+    "UnmatchedText",
+    "MatchSummary",
+    "ScaleFilterInfo",
+    "ProcessingInfo",
+    "DebugInfo",
+    "ModuleIdentificationResult",
+    "ApiResponse",
+    "DetectionItem",
+    "DetectionData",
+    "DependencyStatus",
+    "HealthCheckResult",
+    "to_frontend_format",
+    "from_dimension_matcher_result",
+]
