@@ -11,18 +11,21 @@
 ## 🌟 核心功能
 
 ### 1. 建筑轮廓识别与尺寸提取
+
 - 🖼️ **图像智能分析**：基于 YOLO 深度学习模型的轮廓分割算法，对建筑平面图进行智能分析。
 - 📐 **尺寸自动提取**：自动识别图纸中的尺寸标注并计算真实尺寸。
 - 🎯 **高精度匹配**：智能匹配尺寸标注与轮廓边界，通过算法过滤异常值，确保数据准确性。
 - 📊 **多格式导出**：支持 OBJ、STL、PLY 等 3D 模型格式的导出，便于后续设计和应用。
 
 ### 2. 物料清单智能生成
+
 - 🏗️ **构造做法选型**：支持天花、地面、墙面等多种构造做法选择，满足不同工程需求。
 - 🧮 **智能面积计算**：根据识别的建筑轮廓自动计算各部位面积，为物料估算提供精确数据。
 - 📋 **标准化 BOM 输出**：生成符合工程标准的物料清单（Bill of Materials），包含详细的材料种类、规格和数量。
 - 📤 **多格式导出**：支持 CSV、Excel 等多种格式导出，方便用户进行数据管理和进一步处理。
 
 ### 3. 现代化用户界面
+
 - 🎨 **响应式设计**：基于 React + TypeScript 构建的现代化前端界面，提供优秀的用户体验。
 - 🌈 **流畅动画交互**：使用 Framer Motion 库提供流畅的界面动画和交互效果。
 - 📱 **多端适配**：界面设计考虑了桌面端和移动端的兼容性，确保在不同设备上都能良好运行。
@@ -34,20 +37,20 @@
 
 ```
 ┌─────────────────────────────────────────────────────────────┐
-│                      前端 (React + TypeScript)               │
-│  ┌─────────────┐ ┌──────────────┐ ┌──────────────┐         │
-│  │ 轮廓处理    │ │ 布局识别     │ │ 物料计算     │         │
-│  │ Contour     │ │ Layout       │ │ Material     │         │
-│  │ Processing  │ │ Recognition  │ │ Calculation  │         │
-│  └─────────────┘ └──────────────┘ └──────────────┘         │
+│                      前端 (React + TypeScript)              │
+│  ┌─────────────┐ ┌──────────────┐ ┌──────────────┐          │
+│  │ 轮廓处理     │ │   布局识别    │ │   物料计算   │          │
+│  │ Contour     │ │ Layout       │ │ Material     │          │
+│  │ Processing  │ │ Recognition  │ │ Calculation  │          │
+│  └─────────────┘ └──────────────┘ └──────────────┘          │
 └─────────────────────────────────────────────────────────────┘
                             ↕ HTTP/REST API
 ┌─────────────────────────────────────────────────────────────┐
-│                    后端 (Flask + Python)                     │
-│  ┌─────────────┐ ┌──────────────┐ ┌──────────────┐         │
-│  │ 模块识别    │ │ 物料计算     │ │ 布局分析     │         │
-│  │ Module API  │ │ Material API │ │ Layout API   │         │
-│  └─────────────┘ └──────────────┘ └──────────────┘         │
+│                    后端 (Flask + Python)                    │
+│  ┌─────────────┐ ┌──────────────┐ ┌──────────────┐          │
+│  │ 模块识别     │ │  物料计算    │ │    布局分析   │          │
+│  │ Module API  │ │ Material API │ │ Layout API   │          │
+│  └─────────────┘ └──────────────┘ └──────────────┘          │
 │  ┌──────────────────────────────────────────────┐           │
 │  │         核心服务层 (Services)                 │           │
 │  │  • IntegratedContourService                  │           │
@@ -70,7 +73,7 @@ BOM/
 │   │   ├── integrated_contour_service.py  # 轮廓处理服务
 │   │   ├── layout_service.py              # 布局分析服务
 │   │   └── material_calculation_service.py # 物料计算服务
-│   ├── types/                       # 类型定义
+│   ├── model_types/                 # 类型定义
 │   ├── tests/                       # 单元测试
 │   ├── app.py                       # Flask 应用入口
 │   ├── config.py                    # 配置文件
@@ -93,7 +96,15 @@ BOM/
 │   ├── package.json                # Node.js 依赖
 │   └── tsconfig.json               # TypeScript 配置
 │
+├── modules/                          # 核心算法模块
+│   ├── config_manager.py            # 配置管理器
+│   ├── data_processor.py            # 数据处理器
+│   ├── contour_generate.py          # 轮廓生成
+│   ├── dimension_matcher.py         # 尺寸匹配
+│   └── ...                          # 其他算法模块
+│
 ├── .gitignore                        # Git 忽略文件配置
+├── BS.json                           # 物料计算基础数据
 └── README.md                         # 项目说明文档
 ```
 
@@ -117,38 +128,40 @@ cd BomListGeneration
 
 #### Python 后端
 
-1.  **创建并激活虚拟环境**:
-    ```bash
-    # Windows
-    python -m venv venv
-    ./venv/Scripts/activate
+1. **创建并激活虚拟环境**:
 
-    # Linux/macOS
-    python3 -m venv venv
-    source venv/bin/activate
-    ```
+   ```bash
+   # Windows
+   python -m venv venv
+   ./venv/Scripts/activate
 
-2.  **安装后端依赖**:
-    ```bash
-    pip install -r backend/requirements.txt
-    ```
+   # Linux/macOS
+   python3 -m venv venv
+   source venv/bin/activate
+   ```
+2. **安装后端依赖**:
+
+   ```bash
+   pip install -r backend/requirements.txt
+   ```
 
 #### Node.js 前端
 
-1.  **进入前端目录**:
-    ```bash
-    cd frontend
-    ```
+1. **进入前端目录**:
 
-2.  **安装前端依赖**:
-    ```bash
-    npm install
-    ```
+   ```bash
+   cd frontend
+   ```
+2. **安装前端依赖**:
 
-3.  **返回项目根目录**:
-    ```bash
-    cd ..
-    ```
+   ```bash
+   npm install
+   ```
+3. **返回项目根目录**:
+
+   ```bash
+   cd ..
+   ```
 
 ### 3. 配置环境变量
 
@@ -188,6 +201,7 @@ REACT_APP_API_BASE_URL=http://localhost:5000/api
 cd backend
 python app.py
 ```
+
 后端服务默认运行在 `http://localhost:5000`。
 
 #### 启动前端服务
@@ -198,6 +212,7 @@ python app.py
 cd frontend
 npm start
 ```
+
 前端应用默认运行在 `http://localhost:3000`，并会自动在浏览器中打开。
 
 ### 5. 访问应用
@@ -211,34 +226,34 @@ npm start
 
 ### 轮廓处理流程
 
-1.  **上传建筑平面图**:
-    *   支持格式：JPG, PNG, BMP, TIFF。
-    *   建议分辨率：1000x1000 像素以上。
-    *   确保尺寸标注清晰可见。
-2.  **AI 智能识别**:
-    *   轮廓分割：系统自动提取房间边界。
-    *   尺寸检测：识别标注文字和尺寸线。
-    *   尺寸匹配：将像素尺寸转换为真实尺寸。
-3.  **结果验证**:
-    *   在前端界面查看识别的轮廓和尺寸。
-    *   必要时可以进行手动调整。
-4.  **导出 3D 模型**:
-    *   选择导出格式：OBJ / STL / PLY。
-    *   设置模型高度（毫米）。
-    *   下载 3D 模型文件。
+1. **上传建筑平面图**:
+   * 支持格式：JPG, PNG, BMP, TIFF。
+   * 建议分辨率：1000x1000 像素以上。
+   * 确保尺寸标注清晰可见。
+2. **AI 智能识别**:
+   * 轮廓分割：系统自动提取房间边界。
+   * 尺寸检测：识别标注文字和尺寸线。
+   * 尺寸匹配：将像素尺寸转换为真实尺寸。
+3. **结果验证**:
+   * 在前端界面查看识别的轮廓和尺寸。
+   * 必要时可以进行手动调整。
+4. **导出 3D 模型**:
+   * 选择导出格式：OBJ / STL / PLY。
+   * 设置模型高度（毫米）。
+   * 下载 3D 模型文件。
 
 ### 物料清单生成
 
-1.  **输入房间尺寸**:
-    *   可以通过轮廓处理结果自动导入，或手动输入房间的长、宽、高。
-    *   系统自动计算天花、地面、墙面等各部位面积。
-2.  **选择构造做法**:
-    *   为天花、地面、墙面等部位选择预设的构造做法，或自定义输入。
-3.  **生成 BOM 清单**:
-    *   系统智能分析构造做法，计算所需材料种类和数量。
-    *   生成标准化的物料清单。
-4.  **导出结果**:
-    *   支持 CSV、Excel 和 JSON 格式导出。
+1. **输入房间尺寸**:
+   * 可以通过轮廓处理结果自动导入，或手动输入房间的长、宽、高。
+   * 系统自动计算天花、地面、墙面等各部位面积。
+2. **选择构造做法**:
+   * 为天花、地面、墙面等部位选择预设的构造做法，或自定义输入。
+3. **生成 BOM 清单**:
+   * 系统智能分析构造做法，计算所需材料种类和数量。
+   * 生成标准化的物料清单。
+4. **导出结果**:
+   * 支持 CSV、Excel 和 JSON 格式导出。
 
 ## 🔧 配置说明
 
@@ -277,47 +292,47 @@ REACT_APP_DEBUG=true
 
 ### 后端开发
 
-1.  **激活虚拟环境**: 确保在 `backend` 目录执行任何 Python 命令前，已激活虚拟环境。
-    ```bash
-    # Windows
-    ./venv/Scripts/activate
+1. **激活虚拟环境**: 确保在 `backend` 目录执行任何 Python 命令前，已激活虚拟环境。
+   ```bash
+   # Windows
+   ./venv/Scripts/activate
 
-    # Linux/macOS
-    source venv/bin/activate
-    ```
-2.  **运行开发服务器**: 
-    ```bash
-    cd backend
-    python app.py
-    ```
-3.  **运行测试**:
-    ```bash
-    pytest backend/tests/ -v
-    ```
-4.  **代码格式化/检查**:
-    ```bash
-    black backend/
-    flake8 backend/
-    ```
+   # Linux/macOS
+   source venv/bin/activate
+   ```
+2. **运行开发服务器**:
+   ```bash
+   cd backend
+   python app.py
+   ```
+3. **运行测试**:
+   ```bash
+   pytest backend/tests/ -v
+   ```
+4. **代码格式化/检查**:
+   ```bash
+   black backend/
+   flake8 backend/
+   ```
 
 ### 前端开发
 
-1.  **进入前端目录**:
-    ```bash
-    cd frontend
-    ```
-2.  **开发模式**:
-    ```bash
-    npm start
-    ```
-3.  **构建生产版本**:
-    ```bash
-    npm run build
-    ```
-4.  **运行测试**:
-    ```bash
-    npm test
-    ```
+1. **进入前端目录**:
+   ```bash
+   cd frontend
+   ```
+2. **开发模式**:
+   ```bash
+   npm start
+   ```
+3. **构建生产版本**:
+   ```bash
+   npm run build
+   ```
+4. **运行测试**:
+   ```bash
+   npm test
+   ```
 
 ### API 接口文档
 
@@ -328,6 +343,7 @@ REACT_APP_DEBUG=true
 用于上传图像并进行模块识别和尺寸提取。
 
 **请求参数**:
+
 - `image`: 文件 (必需) - 图像文件（multipart/form-data）。
 - `confidence_threshold`: 浮点数 (可选) - 置信度阈值，默认 0.5。
 - `debug`: 布尔值 (可选) - 调试模式，默认 `false`。
@@ -353,6 +369,7 @@ REACT_APP_DEBUG=true
 用于处理图像并生成 3D 模型。
 
 **请求参数**:
+
 - `image`: 文件 (必需) - 图像文件（multipart/form-data）。
 - `height`: 整数 (必需) - 3D 模型高度，单位毫米 (例如: 2950)。
 - `format`: 字符串 (可选) - 输出模型格式，默认 "obj"，支持 "obj", "stl", "ply"。
@@ -452,52 +469,57 @@ REACT_APP_DEBUG=true
 
 ### 后端测试
 
-1.  **激活虚拟环境** (如果尚未激活)。
-2.  **运行所有测试**:
-    ```bash
-    pytest backend/tests/ -v
-    ```
-3.  **运行特定测试**:
-    ```bash
-    pytest backend/tests/test_api_routes.py -v
-    ```
+1. **激活虚拟环境** (如果尚未激活)。
+2. **运行所有测试**:
+   ```bash
+   pytest backend/tests/ -v
+   ```
+3. **运行特定测试**:
+   ```bash
+   pytest backend/tests/test_api_routes.py -v
+   ```
 
 ### 前端测试
 
-1.  **进入前端目录**:
-    ```bash
-    cd frontend
-    ```
-2.  **运行测试**:
-    ```bash
-    npm test
-    ```
+1. **进入前端目录**:
+   ```bash
+   cd frontend
+   ```
+2. **运行测试**:
+   ```bash
+   npm test
+   ```
 
 ## 📊 性能指标
 
 - **轮廓识别精度**: > 95%（在标准建筑图纸上）
 - **尺寸检测准确率**: > 90%（清晰标注情况下）
 - **处理时间**:
-    - 图像处理 (轮廓识别、尺寸匹配)：2-8 秒/张 (取决于图像复杂度和服务器性能)
-    - BOM 生成：3-8 秒/房间 (取决于构造做法复杂度和LLM响应速度)
+  - 图像处理 (轮廓识别、尺寸匹配)：2-8 秒/张 (取决于图像复杂度和服务器性能)
+  - BOM 生成：3-8 秒/房间 (取决于构造做法复杂度和LLM响应速度)
 
 ## 🔍 常见问题
 
 ### Q: 上传图像失败？
+
 A: 检查图像格式是否支持（JPG/PNG/BMP/TIFF），文件大小不超过 16MB。
 
 ### Q: 轮廓识别或尺寸提取不准确？
+
 A: 确保图像清晰，尺寸标注完整。可以尝试调整后端 `backend/config.py` 中的 `confidence_threshold` 等参数。
 
 ### Q: API 连接失败？
+
 A: 确认后端服务已启动，检查项目根目录下的 `.env` 文件中的 `FLASK_HOST` 和 `FLASK_PORT` 配置，以及前端 `frontend/.env` 中的 `REACT_APP_API_BASE_URL` 是否正确指向后端服务。
 
 ### Q: 3D 模型无法导出？
+
 A: 检查后端服务是否有写入文件系统的权限，确保有足够的磁盘空间。
 
 ## 📝 更新日志
 
 ### v1.0.0 (2024-XX-XX)
+
 - ✨ 初始版本发布
 - 🎯 支持建筑轮廓识别与尺寸自动提取
 - 🏗️ 支持构造做法选型与物料清单生成
@@ -519,24 +541,7 @@ A: 检查后端服务是否有写入文件系统的权限，确保有足够的�
 
 ## 👥 作者
 
-- AI Assistant
-
-## 🙏 致谢
-
-感谢以下开源项目：
-
-- [React](https://reactjs.org/) - 前端框架
-- [Flask](https://flask.palletsprojects.com/) - 后端框架
-- [YOLO](https://github.com/ultralytics/yolov5) - 目标检测 (通过 `extract_info` 模块集成)
-- [OpenCV](https://opencv.org/) - 计算机视觉库
-- [Framer Motion](https://www.framer.com/motion/) - React 动画库
-
-## 📞 联系方式
-
-如有问题或建议，请通过以下方式联系：
-
-- Email: your-email@example.com
-- Issues: [GitHub Issues](https://github.com/your-repo/issues)
+- 素人卖家
 
 ---
 
