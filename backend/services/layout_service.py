@@ -23,8 +23,8 @@ class LayoutService:
     _matcher = None
 
     # Paths to models
-    LAYOUT_MODEL_PATH = r"E:\Github_project\BOM\extract_info\layout_detection\training_outputs\layout_segmentation\layout_segmentation_segmentation_20251202_091457\weights\best.pt"
-    DIMENSION_MODEL_PATH = r"E:\Github_project\BOM\extract_info\corner_text_modeldetection\training_outputs\dimension\dimension_smart_training_20251205_150157\weights\best.pt"
+    LAYOUT_MODEL_PATH = r"D:\AI_project\BomListGeneration\extract_info\layout_detection\training_outputs\layout_segmentation\layout_segmentation_segmentation_20251202_091457\weights\best.pt"
+    DIMENSION_MODEL_PATH = r"D:\AI_project\BomListGeneration\extract_info\corner_text_modeldetection\training_outputs\dimension\dimension_smart_training_20251205_150157\weights\best.pt"
     
     # Class names for layout segmentation
     CLASS_NAMES = ['column', 'wall', 'door', 'window', 'other']

@@ -39,7 +39,7 @@ if extract_info_path not in sys.path:
 def _lazy_import_contour_generator():
     """延迟导入ContourGenerator"""
     try:
-        from corner_text_modeldetection.contour_generate import ContourGenerator
+        from modules.contour_generate import ContourGenerator
         logger.info("成功导入ContourGenerator")
         return ContourGenerator
     except ImportError as e:
@@ -49,7 +49,7 @@ def _lazy_import_contour_generator():
 def _lazy_import_dimension_detection():
     """延迟导入尺寸检测模块"""
     try:
-        from corner_text_modeldetection.yolo_dimension_detect_predict import save_dimension_detection_results
+        from modules.yolo_dimension_detect_predict import save_dimension_detection_results
         logger.info("成功导入尺寸检测模块")
         return save_dimension_detection_results
     except ImportError as e:
@@ -59,7 +59,7 @@ def _lazy_import_dimension_detection():
 def _lazy_import_dimension_matcher():
     """延迟导入DimensionMatcher"""
     try:
-        from corner_text_modeldetection.dimension_matcher import DimensionMatcher
+        from modules.dimension_matcher import DimensionMatcher
         logger.info("成功导入DimensionMatcher")
         return DimensionMatcher
     except ImportError as e:

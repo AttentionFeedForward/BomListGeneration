@@ -17,7 +17,7 @@ try:
     # 添加modules目录到Python路径
     backend_path = os.path.dirname(os.path.dirname(__file__))
     project_path = os.path.dirname(backend_path)
-    modules_path = os.path.join(project_path, 'llm', 'modules')
+    modules_path = os.path.join(project_path, 'modules')
     sys.path.insert(0, modules_path)
     
     # 直接导入模块文件

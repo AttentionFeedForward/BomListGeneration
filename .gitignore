@@ -2,15 +2,13 @@
 # 你的项目特有文件夹 (已修正路径)
 # ==========================================
 bomGN/
-llm/
-extract_info/
 scripts/
 test/
 backend/uploads/
-BS.json
 DEPLOYMENT.md
 mep_report.html
 useapi.py
+extract_info/
 # ==========================================
 # Python 核心忽略
 # ==========================================
